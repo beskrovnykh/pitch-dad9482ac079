@@ -1,0 +1,1088 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Презентация · Андрей Бескровных</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+
+  <style>
+    :root {
+      --ink: #0a0a0a;
+      --paper: #fafaf7;
+      --accent: #e63946;
+      --accent-2: #1d3557;
+      --muted: #6b6b6b;
+      --line: #e5e5e0;
+    }
+
+    .reveal {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Helvetica Neue", Arial, sans-serif;
+      font-size: 28px;
+      color: var(--ink);
+      background: var(--paper);
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      letter-spacing: -0.01em;
+    }
+
+    .reveal .slides { text-align: left; }
+    .reveal .slides > section,
+    .reveal .slides > section > section { padding: 0; height: 100%; }
+
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+      font-family: inherit;
+      color: var(--ink);
+      text-transform: none;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+      margin: 0 0 0.4em 0;
+      line-height: 1.05;
+    }
+
+    .reveal h1 { font-size: 2.8em; }
+    .reveal h2 { font-size: 2em; }
+    .reveal h3 { font-size: 1.4em; color: var(--muted); font-weight: 500; }
+    .reveal h4 { font-size: 1em; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; }
+
+    .reveal p { line-height: 1.5; }
+    .reveal strong { color: var(--ink); font-weight: 700; }
+    .reveal em { color: var(--accent); font-style: normal; font-weight: 600; }
+
+    .reveal .slide-number {
+      font-size: 14px;
+      color: var(--muted);
+      background: transparent;
+    }
+
+    .slide-pad { padding: 5vh 6vw; box-sizing: border-box; height: 100%; display: flex; flex-direction: column; }
+    .slide-pad.center { justify-content: center; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3vw; height: 100%; }
+    .grid-2.align-center { align-items: center; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2vw; }
+
+    .eyebrow {
+      font-size: 0.8em;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 600;
+      margin-bottom: 0.8em;
+    }
+
+    ul.clean { list-style: none; padding: 0; margin: 0; }
+    ul.clean li {
+      padding: 0.35em 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.95em;
+    }
+    ul.clean li:last-child { border-bottom: none; }
+    ul.clean li::before {
+      content: "—";
+      color: var(--accent);
+      margin-right: 0.6em;
+      font-weight: 700;
+    }
+
+    .big-num {
+      font-size: 4em;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--accent-2);
+    }
+    .big-num-label { font-size: 0.75em; color: var(--muted); margin-top: 0.4em; }
+    .stat-block { display: flex; flex-direction: column; }
+    .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2vw; margin: 1.5em 0; }
+    .stat-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2vw; margin: 1.5em 0; }
+
+    .photo-full { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo-contain { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .photo-cell { overflow: hidden; border-radius: 8px; }
+
+    table.compare { width: 100%; border-collapse: collapse; font-size: 0.78em; }
+    table.compare th, table.compare td {
+      text-align: left;
+      padding: 0.7em 0.9em;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    table.compare th {
+      font-size: 0.8em;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      font-weight: 600;
+      border-bottom: 2px solid var(--ink);
+    }
+    table.compare td.req { color: var(--muted); }
+    table.compare td.proof strong { color: var(--accent-2); }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.7em;
+      padding: 0.25em 0.7em;
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--paper);
+      margin: 0.2em 0.3em 0.2em 0;
+      letter-spacing: 0.02em;
+    }
+    .tag.outline { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+    .tag.accent { background: var(--accent); }
+
+    .quote {
+      font-size: 1.4em;
+      line-height: 1.35;
+      font-weight: 500;
+      color: var(--ink);
+      border-left: 4px solid var(--accent);
+      padding-left: 1em;
+      margin: 0.5em 0;
+    }
+
+    .cover {
+      background: var(--ink);
+      color: var(--paper);
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url('photos/20190517 - Хакатон - 0013.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      opacity: 0.55;
+      filter: grayscale(0.1) contrast(1.05);
+    }
+    .cover-inner {
+      position: relative;
+      z-index: 2;
+      padding: 6vh 6vw;
+      height: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .cover h1 { color: var(--paper); font-size: 3.4em; max-width: 14ch; }
+    .cover h3 { color: var(--paper); opacity: 0.85; font-weight: 400; }
+    .cover .eyebrow { color: #ff6b6b; }
+    .cover .meta { font-size: 0.7em; color: var(--paper); opacity: 0.7; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    .cover .domain-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.2em;
+      margin-top: 2em;
+      max-width: 55em;
+    }
+    .cover .domain-cell {
+      border-top: 2px solid rgba(255,107,107,0.8);
+      padding-top: 0.7em;
+    }
+    .cover .domain-cell .domain {
+      font-size: 0.65em;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #ff6b6b;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.2em;
+    }
+    .cover .domain-cell .role {
+      font-size: 0.95em;
+      color: var(--paper);
+      font-weight: 700;
+      display: block;
+      line-height: 1.15;
+    }
+    .cover .domain-cell .project {
+      font-size: 0.7em;
+      color: var(--paper);
+      opacity: 0.7;
+      display: block;
+      margin-top: 0.2em;
+    }
+
+    .section-divider {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 10vh 6vw;
+      height: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .section-divider h4 { color: #ff6b6b; }
+    .section-divider h1 { color: var(--paper); font-size: 3.5em; max-width: 16ch; }
+    .section-divider h3 { color: var(--paper); opacity: 0.6; font-weight: 400; max-width: 40ch; margin-top: 0.5em; }
+
+    .pills { margin: 0.8em 0; }
+
+    .links { font-size: 0.8em; color: var(--muted); }
+    .links code {
+      background: #f0ede5;
+      padding: 0.15em 0.5em;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+
+    .kicker-row {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.2em;
+      align-items: эталонными;
+      padding: 0.55em 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .kicker-row:last-child { border-bottom: none; }
+    .kicker-year {
+      font-size: 0.9em;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+      min-width: 6em;
+    }
+    .kicker-text strong { display: block; font-size: 1em; margin-bottom: 0.1em; }
+    .kicker-text span { color: var(--muted); font-size: 0.85em; }
+    .kicker-domain {
+      display: inline-block;
+      font-size: 0.65em;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-right: 0.5em;
+      font-weight: 600;
+    }
+
+    /* on mobile — hide cover bg photo (renders weird with reveal scale) */
+    @media (max-width: 768px) {
+      .cover::before {
+        display: none;
+      }
+      .cover { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); }
+      .cover h1 { font-size: 2.4em; }
+    }
+
+    /* mobile hint */
+    #mobile-hint {
+      display: none;
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      z-index: 9999;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 13px;
+      line-height: 1.4;
+      padding: 10px 14px;
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    }
+    #mobile-hint .close {
+      float: right;
+      margin-left: 10px;
+      cursor: pointer;
+      color: #ff6b6b;
+      font-weight: 700;
+    }
+    @media (max-width: 768px) {
+      #mobile-hint { display: block; }
+    }
+
+    .arch-diagram {
+      background: #f6f3ea;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1.2em;
+      font-family: "SF Mono", "Menlo", monospace;
+      font-size: 0.72em;
+      line-height: 1.5;
+      color: var(--ink);
+    }
+    .arch-diagram .box {
+      background: var(--paper);
+      border: 1px solid var(--ink);
+      border-radius: 6px;
+      padding: 0.4em 0.8em;
+      display: inline-block;
+      margin: 0.2em 0.3em 0.2em 0;
+      font-weight: 600;
+    }
+    .arch-diagram .box.accent { background: var(--accent); color: var(--paper); border-color: var(--accent); }
+    .arch-diagram .box.muted { color: var(--muted); border-color: var(--muted); }
+    .arch-diagram .row { margin: 0.3em 0; }
+    .arch-diagram .group-label {
+      font-size: 0.85em;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      margin: 0.7em 0 0.2em 0;
+    }
+  </style>
+</head>
+<body>
+
+<div id="mobile-hint">
+  <span class="close" onclick="this.parentElement.style.display='none'">✕</span>
+  Презентация сделана под десктоп. Лучше откройте с ноутбука. На мобилке — зумируйте пальцами, листайте свайпом.
+</div>
+
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1. COVER -->
+    <section class="cover">
+      <div class="cover-inner">
+        <div>
+          <div class="eyebrow">Ведущий инженер · Рейтинги и рекомендации</div>
+          <div class="meta">Презентация · Апрель 2026</div>
+        </div>
+        <div>
+          <h1>1 человек = команда из 5.</h1>
+          <h3>Разные домены. Разные роли. Каждый раз — с нуля до продакшена.</h3>
+          <div class="domain-strip">
+            <div class="domain-cell">
+              <span class="domain">Дет · Образование</span>
+              <span class="role">Сооснователь</span>
+              <span class="project">GeekyCats</span>
+            </div>
+            <div class="domain-cell">
+              <span class="domain">Госсистемы</span>
+              <span class="role">Инженер</span>
+              <span class="project">ЭИИС ПМС · Минэк</span>
+            </div>
+            <div class="domain-cell">
+              <span class="domain">AI · Рекомендации</span>
+              <span class="role">Тех-лид</span>
+              <span class="project">Умка</span>
+            </div>
+            <div class="domain-cell">
+              <span class="domain">Игры</span>
+              <span class="role">Тех-лид</span>
+              <span class="project">Salomander Games</span>
+            </div>
+            <div class="domain-cell">
+              <span class="domain">Финтех · B2C</span>
+              <span class="role">Тех-директор</span>
+              <span class="project">Финтех-платформа</span>
+            </div>
+          </div>
+        </div>
+        <div class="meta">Андрей Бескровных &middot; @beskrovnykh &middot; Ведущий инженер</div>
+      </div>
+    </section>
+
+    <!-- 2. THESIS -->
+    <section>
+      <div class="slide-pad center">
+        <div class="eyebrow">Тезис</div>
+        <h1 style="max-width: 22ch;">Я систематически создаю инновации в разных доменах — в условиях неопределённости и с новыми для меня технологиями — как тех-лид.</h1>
+      </div>
+    </section>
+
+    <!-- 3. PATTERN -->
+    <section>
+      <div class="slide-pad">
+        <div class="eyebrow">Паттерн — 7 лет</div>
+        <h2 style="max-width: 22ch;">Каждый год — новая область. Каждый раз — с нуля до продакшена. Новые для меня технологии.</h2>
+        <div style="margin-top: 1.2em;">
+          <div class="kicker-row">
+            <div class="kicker-year">2018–2021</div>
+            <div class="kicker-text"><strong><span class="kicker-domain">Детские технологии · Образование</span>GeekyCats</strong><span>Сооснователь, tech + методика + edu + операции. 3 филиала. Передал методики в Инженерную школу НГУ. Школа работает до сих пор.</span></div>
+          </div>
+          <div class="kicker-row">
+            <div class="kicker-year">2021–2022</div>
+            <div class="kicker-text"><strong><span class="kicker-domain">Госсектор</span>ЭИИС РИХ ПМС · Минэкономразвития</strong><span>Camunda BPM. Ядро — межведомственные согласования между ведомствами. Внутренняя система Минэкономразвития РФ.</span></div>
+          </div>
+          <div class="kicker-row">
+            <div class="kicker-year">2023</div>
+            <div class="kicker-text"><strong><span class="kicker-domain">Образование</span>Умка — семантический видеопоиск</strong><span>Собственный переранжировщик, векторные модели, смысловой поиск — без сторонних фреймворков. 300 запросов/день в проде.</span></div>
+          </div>
+          <div class="kicker-row">
+            <div class="kicker-year">2024</div>
+            <div class="kicker-text"><strong><span class="kicker-domain">Игры</span>Salomander — Тех-лид</strong><span>3 месяца в чужой команде. Реализовывал архитектуру тех. директора. Вырастил инженера-преемника, который ведёт проект до сих пор.</span></div>
+          </div>
+          <div class="kicker-row">
+            <div class="kicker-year">2026 →</div>
+            <div class="kicker-text"><strong><span class="kicker-domain">Финтех · B2C</span>Финтех-B2C (скрытый режим) — тех-директор</strong><span>Соло — бэкенд и архитектура. Мобильное приложение — в релиз. Кодовая база на основе AI-агентов.</span></div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.5em; padding-top: 1em; border-top: 1px dashed var(--line);">
+          <div class="eyebrow" style="margin-bottom: 0.8em;">Side / personal projects</div>
+          <div class="kicker-row">
+            <div class="kicker-year">2025–2026</div>
+            <div class="kicker-text"><strong><span class="kicker-domain">Финтех · Крипто</span>BlueFreedom</strong><span>Соло — крипто-трейдинг платформа: 14 микросервисов, 75K строк, 400 коммитов. Открытое ядро AlphaEvolve — эволюционный поиск стратегий.</span></div>
+          </div>
+          <div class="kicker-row">
+            <div class="kicker-year">2026</div>
+            <div class="kicker-text"><strong><span class="kicker-domain">Здоровье</span>FamilyDoctor</strong><span>AI-платформа EFT-терапии для пар (методология Susan Johnson). Агентская «память терапевта» на Claude Code SDK. Заявка на грант АСИ.</span></div>
+          </div>
+        </div>
+
+        <p style="font-size: 0.75em; color: var(--muted); margin-top: 1em; max-width: 60ch;">
+          Математическая база — мехмат НГУ, Институт гидродинамики им. Лаврентьева СО РАН. Публикации по моделированию механики сплошных сред.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4. DIVIDER — Case 1 GeekyCats -->
+    <section class="section-divider">
+      <h4>Кейс 01 · 2018–2021 · Детские технологии · Образование</h4>
+      <h1>GeekyCats</h1>
+      <h3>Школа креативного программирования. Новосибирск. Сооснователь + tech + методика + операции.</h3>
+    </section>
+
+    <!-- 5. GeekyCats overview -->
+    <section>
+      <div class="slide-pad">
+        <div class="grid-2 align-center" style="gap: 4vw;">
+          <div>
+            <div class="eyebrow">Сооснователь + tech / edu / operations</div>
+            <h2>Построил Образование-организацию с партнёром с нуля. Сегодня она работает без нас.</h2>
+            <ul class="clean" style="margin-top: 1.2em;">
+              <li>Я — методика, преподаватели, курсы, tech, операции. Партнёр — маркетинг и продажи</li>
+              <li>Адаптация курса Гарвардской школы для детей 8–15 лет: код, креативное мышление, soft skills, питч-навыки</li>
+              <li><strong>3 филиала</strong> в Новосибирске, собственная CRM и операционка</li>
+              <li>Передал партнёру — на той же базе выросла <strong>вторая школа, <a href="https://garagetesla.ru/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">Garage Tesla</a></strong></li>
+              <li>Методические материалы — в <strong>Инженерной школе НГУ</strong>. Школа работает до сих пор под другим брендом</li>
+              <li><a href="https://web.facebook.com/geekycats.school" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">facebook.com/geekycats.school</a> — архив сообщества и отзывы</li>
+            </ul>
+          </div>
+          <div class="photo-cell" style="height: 75vh;">
+            <img src="photos/101826683_566682067566858_966640921779109888_n.jpg" class="photo-full" alt="Выпуск GeekyCats">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. GeekyCats methodology -->
+    <section>
+      <div class="slide-pad">
+        <div class="grid-2 align-center" style="gap: 4vw;">
+          <div class="photo-cell" style="height: 75vh; background: var(--paper); display: flex; align-items: center; justify-content: center;">
+            <img src="photos/Снимок экрана 2026-04-19 в 20.08.46.png" class="photo-contain" alt="Курсы GeekyCats — 4 столпа">
+          </div>
+          <div>
+            <div class="eyebrow">Методика</div>
+            <h2>Не «курсы скретча».<br>Развитие мышления.</h2>
+            <ul class="clean" style="margin-top: 1.2em;">
+              <li><strong>Программирование</strong> — профессиональные навыки</li>
+              <li><strong>Креативное мышление</strong> — нестандартные задачи с ограничениями</li>
+              <li><strong>Логическое, системное, алгоритмическое</strong> — декомпозиция сложного в простое</li>
+              <li><strong>Командная работа</strong> — быстро договориться с другими людьми и добиться общих результатов</li>
+            </ul>
+            <p style="font-size: 0.85em; color: var(--muted); margin-top: 1.5em;">
+              Тот же набор навыков, которым я пользуюсь сегодня как ведущий инженер: разложить задачу, найти нестандартное решение, договориться со стейкхолдерами, довести до результата.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. GeekyCats scale -->
+    <section>
+      <div class="slide-pad">
+        <div class="eyebrow">Scale — не pet project</div>
+        <h2 style="max-width: 22ch;">Операционная организация с отделами: admin · design · dev · edu · head · sales.</h2>
+        <div class="grid-2" style="height: 52vh; margin-top: 1em; gap: 1vw;">
+          <div class="photo-cell"><img src="photos/15.JPG" class="photo-full" alt="Класс GeekyCats"></div>
+          <div class="photo-cell"><img src="photos/10.JPG" class="photo-full" alt="Ученики на занятии"></div>
+        </div>
+        <div class="stat-grid" style="margin-top: 1em;">
+          <div class="stat-block"><div class="big-num">3</div><div class="big-num-label">филиала в Новосибирске</div></div>
+          <div class="stat-block"><div class="big-num">2</div><div class="big-num-label">организации выросли из одной</div></div>
+          <div class="stat-block"><div class="big-num">5+</div><div class="big-num-label">лет школа работает без меня</div></div>
+          <div class="stat-block"><div class="big-num">НГУ</div><div class="big-num-label">методики в Инженерной школе</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. GeekyCats brand + events -->
+    <section>
+      <div class="slide-pad">
+        <div class="grid-2 align-center" style="gap: 4vw;">
+          <div class="photo-cell" style="height: 75vh;">
+            <img src="photos/20190517 - Хакатон - 0052.jpg" class="photo-full" alt="Флаеры IT-лагеря">
+          </div>
+          <div>
+            <div class="eyebrow">Полный цикл продукта</div>
+            <h2>От бренда и печати до мероприятий и онлайн-пивота.</h2>
+            <ul class="clean" style="margin-top: 1em;">
+              <li>Полный <strong>бренд-пакет</strong>: логотипы CMYK / Pantone / RGB, моно, инверт</li>
+              <li><strong>Печатная продукция</strong>: дипломы Python и Scratch, бейджи, карточки, флаеры, door signs</li>
+              <li><strong>Мероприятия</strong>: хакатон 2019, IT-лагерь лето 2019, Scratch-олимпиада, открытые занятия в Технопарке, партнёрство с Яндексом</li>
+              <li><strong>Covid-пивот</strong>: переезд в онлайн, 23 потока Zoom-занятий за 2020</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. DIVIDER — Case 2 ProIT -->
+    <section class="section-divider">
+      <h4>Кейс 02 · 2021–2022 · Госсектор</h4>
+      <h1>ЭИИС РИХ ПМС</h1>
+      <h3>Единая информационно-аналитическая система Министерства экономического развития РФ. Внутренний контур.</h3>
+    </section>
+
+    <!-- 10. ProIT overview -->
+    <section>
+      <div class="slide-pad">
+        <div class="eyebrow">Государственная система на проде</div>
+        <h2 style="max-width: 26ch; font-size: 1.7em;">Реализовал с нуля ядро системы межведомственных согласований на Camunda BPM.</h2>
+
+        <div style="margin-top: 0.9em; padding: 0.7em 1em; background: #fff3ec; border-left: 4px solid var(--accent); border-radius: 0 6px 6px 0;">
+          <div class="eyebrow" style="margin-bottom: 0.2em; font-size: 0.65em;">Новая для меня технология</div>
+          <p style="margin: 0; font-size: 0.82em; line-height: 1.4;">
+            <strong>BPM-движки ранее не использовал.</strong> Провёл исследование по Camunda / jBPM / Flowable, выбрал Camunda, выкатил пилот. Пилот выдержал ревью и приёмочное тестирование — <strong>проект ушёл в прод на моей архитектуре.</strong>
+          </p>
+        </div>
+
+        <div class="grid-2" style="margin-top: 0.9em;">
+          <ul class="clean" style="font-size: 0.85em;">
+            <li><strong>Ядро</strong>: оркестрация процессов согласования между ведомствами</li>
+            <li><strong>Camunda BPM</strong> — процессы поверх BPMN-диаграмм</li>
+            <li>Spring WebFlux, Kafka, Kafka Streams — реактивный стек</li>
+            <li>Redis, MongoDB, PostgreSQL — разные store</li>
+          </ul>
+          <ul class="clean" style="font-size: 0.85em;">
+            <li><strong>TestContainers</strong> — полное E2E-покрытие критических путей</li>
+            <li><strong>Kubernetes</strong>-деплой, 3 контура + предпрод</li>
+            <li>Продакшен: <strong>внутренний контур Минэкономразвития РФ</strong></li>
+            <li><strong>Нагрузочное тестирование</strong>: ~500 RPS на создание процессов</li>
+          </ul>
+        </div>
+
+        <div class="pills" style="margin-top: 0.8em;">
+          <span class="tag">Java 11</span>
+          <span class="tag">Spring WebFlux</span>
+          <span class="tag accent">Camunda BPM</span>
+          <span class="tag">Kafka</span>
+          <span class="tag">TestContainers</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">Redis</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. ProIT BPMN artifact -->
+    <section>
+      <div class="slide-pad">
+        <div class="eyebrow">Артефакт · BPMN</div>
+        <h2 style="max-width: 26ch;">Ядро системы — BPMN-процессы на Camunda.</h2>
+        <div class="grid-2" style="margin-top: 0.8em; gap: 2vw; flex: 1; min-height: 0;">
+          <div style="display: flex; flex-direction: column; min-height: 0;">
+            <div class="eyebrow" style="font-size: 0.65em; margin-bottom: 0.3em; flex: 0 0 auto;">1 · Маршрут между ведомствами с откатами</div>
+            <div class="photo-cell" style="flex: 1 1 0; min-height: 0; background: white; display: flex; align-items: center; justify-content: center; padding: 0.6em; border: 1px solid var(--line);">
+              <img src="photos/proit_bpmn_stepback.png" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block;" alt="BPMN: маршрут с откатами">
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; min-height: 0;">
+            <div class="eyebrow" style="font-size: 0.65em; margin-bottom: 0.3em; flex: 0 0 auto;">2 · Согласование внутри одного ведомства</div>
+            <div class="photo-cell" style="flex: 1 1 0; min-height: 0; background: white; display: flex; align-items: center; justify-content: center; padding: 0.6em; border: 1px solid var(--line);">
+              <img src="photos/proit_bpmn_sub.png" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block;" alt="BPMN: согласование внутри одного ведомства">
+            </div>
+          </div>
+        </div>
+        <p style="font-size: 0.7em; color: var(--muted); margin-top: 0.9em; max-width: 72ch; line-height: 1.4; flex: 0 0 auto;">
+          Упрощённые диаграммы для наглядности. В продукте — 5 BPMN-процессов, 540 Java-классов, 27 миграций Liquibase, Kubernetes-деплой на 5 контуров.
+        </p>
+      </div>
+    </section>
+
+    <!-- 12. ProIT architecture + integrations -->
+    <section>
+      <div class="slide-pad">
+        <div class="eyebrow">Артефакт · Архитектура · Интеграции</div>
+        <h2 style="max-width: 26ch; font-size: 1.7em;">540 Java-классов в 14 доменах. 5+ интеграций с госсистемами.</h2>
+
+        <div class="grid-2" style="margin-top: 0.8em; gap: 2.5vw;">
+
+          <div>
+            <div class="eyebrow" style="font-size: 0.6em; margin-bottom: 0.4em;">Архитектура пакетов</div>
+            <div class="arch-diagram" style="font-size: 0.62em; padding: 0.8em 1em;">
+              <div class="group-label">Process core</div>
+              <div class="row">
+                <span class="box accent">process_engine · 56</span>
+                <span class="box accent">process_storage · 42</span>
+              </div>
+              <div class="group-label">Event processing</div>
+              <div class="row">
+                <span class="box">update_engine · 12</span>
+                <span class="box">subscription_engine · 9</span>
+                <span class="box">store_updater · 5</span>
+              </div>
+              <div class="group-label">Domain model</div>
+              <div class="row">
+                <span class="box">entity · 27</span>
+                <span class="box">domain · 17</span>
+                <span class="box">repository · 22</span>
+                <span class="box">service · 41</span>
+                <span class="box muted">dto · 87</span>
+              </div>
+              <div class="group-label">Presentation · API · Cabinet</div>
+              <div class="row">
+                <span class="box">controller · 20</span>
+                <span class="box">lk · 51</span>
+                <span class="box">websocket · 9</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="eyebrow" style="font-size: 0.6em; margin-bottom: 0.4em;">Интеграции с внешними госсистемами</div>
+            <div class="arch-diagram" style="font-size: 0.66em; padding: 0.8em 1em;">
+              <div class="group-label">integration · 121 класс</div>
+              <div class="row" style="margin-top: 0.4em;">
+                <span class="box accent">НСИ</span>
+                <span style="color: var(--muted);">— нормативно-справочная информация</span>
+              </div>
+              <div class="row">
+                <span class="box accent">ФАИП</span>
+                <span style="color: var(--muted);">— федер. адресная инвест. программа</span>
+              </div>
+              <div class="row">
+                <span class="box accent">ПУВД</span>
+                <span style="color: var(--muted);">— межведомственное взаимодействие</span>
+              </div>
+              <div class="row">
+                <span class="box accent">СЛП</span>
+                <span style="color: var(--muted);">— система ЛК поставщика</span>
+              </div>
+              <div class="row">
+                <span class="box">admin</span>
+                <span style="color: var(--muted);">— административные API</span>
+              </div>
+
+              <div class="group-label" style="margin-top: 0.7em;">Kubernetes deploy</div>
+              <div class="row">
+                <span class="box">Deployment</span>
+                <span class="box">Service</span>
+                <span class="box">ConfigMap</span>
+                <span class="box">Ingress</span>
+                <span class="box">Redis</span>
+                <span class="box">Keycloak</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <p style="font-size: 0.68em; color: var(--muted); margin-top: 0.8em; max-width: 78ch; line-height: 1.4;">
+          Система живёт в ландшафте госсистем. Integration-слой с 121 классом — самый крупный в кодбазе. 3+ контура деплоя (dev / test / demo + предпрод).
+        </p>
+      </div>
+    </section>
+
+    <!-- 12b. NEW — Умка — ranking engine -->
+    <section>
+      <div class="slide-pad">
+        <div class="eyebrow">Кейс 03 · 2023 · AI / Рекомендации · тех-лид</div>
+        <h2 style="max-width: 26ch;">Умка — движок ранжирования для поиска фрагмента видео по вопросу пользователя.</h2>
+
+        <div class="grid-2" style="margin-top: 1.2em; gap: 2.5vw;">
+          <ul class="clean">
+            <li><strong>Задача.</strong> По вопросу пользователя найти релевантный фрагмент видео в корпусе на сотни часов.</li>
+            <li><strong>Стадия 1 — поиск кандидатов.</strong> Вопрос раскладывается в последовательность векторных представлений; по корпусу считается смысловое расстояние → N ближайших фрагментов.</li>
+            <li><strong>Стадия 2 — доборное ранжирование.</strong> Для каждого кандидата строится сжатое описание смысла — «заголовок главы».</li>
+          </ul>
+          <ul class="clean">
+            <li><strong>Два сигнала.</strong> Вопрос сопоставляется отдельно: с буквальным текстом и со смысловым описанием. Получаем две меры близости.</li>
+            <li><strong>Итоговая оценка.</strong> Взвешенная свёртка двух сигналов → число от 0 до 1. <strong>Вес смысла выше веса буквального текста</strong> — смысл бьёт букву.</li>
+            <li><strong>В проде.</strong> 300 запросов/день у частного заказчика. Собственная реализация — без сторонних фреймворков.</li>
+          </ul>
+        </div>
+
+        <div class="pills" style="margin-top: 1.2em;">
+          <span class="tag">Python</span>
+          <span class="tag">Векторные модели</span>
+          <span class="tag">Смысловой поиск</span>
+          <span class="tag">Переранжирование</span>
+          <span class="tag">Redis</span>
+          <span class="tag accent">2023 · NDA</span>
+        </div>
+
+        <p style="font-size: 0.78em; color: var(--muted); margin-top: 1em; max-width: 60em; line-height: 1.5;">
+          Та же математика — взвешенная свёртка нескольких сигналов с асимметричным весом — лежит в основе любого движка репутационного ранжирования. Это напрямую применимо к задаче DonateOpen: размер пожертвования × репутация донатора.
+        </p>
+      </div>
+    </section>
+
+    <!-- 13. Salomander — condensed single slide -->
+    <section>
+      <div class="slide-pad">
+        <div class="eyebrow">Кейс 04 · 2024 · Игры · 3 месяца как тех-лид</div>
+        <h2 style="max-width: 26ch;">Вошёл в чужую архитектуру, лидировал команду до релиза, вырастил преемника.</h2>
+
+        <div class="grid-2" style="margin-top: 1.2em; gap: 2.5vw;">
+          <ul class="clean">
+            <li><strong>Лидировал команду до выхода в прод</strong> — довёл фичи и процесс до релиз-готовности</li>
+            <li><strong>Владелец нескольких крупных фич</strong>: от обсуждения архитектуры с тех-директором до реализации в коде</li>
+            <li><strong>Внедрил SonarQube в CI</strong> — автопроверка качества на каждый PR</li>
+          </ul>
+          <ul class="clean">
+            <li><strong>Декомпозировал задачи</strong> для команды, организовал прозрачный процесс разработки</li>
+            <li><strong>Вырастил инженера-преемника</strong> — он ведёт проект <strong>до сих пор</strong></li>
+            <li>Реализовывал архитектуру <strong>технического директора</strong> — без эго-переписываний</li>
+          </ul>
+        </div>
+
+        <div style="margin-top: 1.2em; padding: 0.7em 1em; background: #f4f1e8; border-left: 3px solid var(--muted); border-radius: 0 6px 6px 0; font-size: 0.78em; color: var(--muted);">
+          <strong style="color: var(--ink);">Контекст проекта:</strong> продакшен-система на Kubernetes (GitOps, Helm, Terraform, SonarQube, стек наблюдаемости). Архитектура заложена тех-директором до меня — я лидировал реализацию. Продукт в проде: <strong style="color: var(--ink);">~3 000 пользователей/мес</strong>.
+        </div>
+
+        <p style="font-size: 0.78em; color: var(--muted); margin-top: 1em; max-width: 58em; line-height: 1.5;">
+          Ценность кейса — быстрое погружение в новый домен, зрелая связка с тех-директором, и преемственность, проверенная временем.
+        </p>
+      </div>
+    </section>
+
+    <!-- 15. DIVIDER — Case 5 Финтех-B2C (скрытый режим) -->
+    <section class="section-divider">
+      <h4>Кейс 05 · 2026 · Финтех · B2C · Тех-директор</h4>
+      <h1>Финтех-B2C (скрытый режим)</h1>
+      <h3>Заложил архитектуру системы с нуля: от набора скриптов и одной БД — до отказоустойчивой платформы с multi-AZ. Мобильное приложение в релиз.</h3>
+    </section>
+
+    <!-- 16. Финтех-B2C (скрытый режим) overview — transformation -->
+    <section>
+      <div class="slide-pad">
+        <div class="eyebrow">тех-директор · текущая позиция</div>
+        <h2 style="max-width: 24ch;">Заложил архитектуру системы. От скриптов и БД — до отказоустойчивой платформы.</h2>
+
+        <div class="grid-2" style="margin-top: 1.2em; gap: 2.5vw;">
+          <div style="padding: 0.9em 1.1em; background: #f4f1e8; border-left: 3px solid var(--muted); border-radius: 0 6px 6px 0;">
+            <div class="eyebrow" style="font-size: 0.65em; color: var(--muted); margin-bottom: 0.4em;">Было (досталось на входе)</div>
+            <ul class="clean" style="font-size: 0.9em;">
+              <li>Набор скриптов</li>
+              <li>Одна база данных</li>
+            </ul>
+          </div>
+          <div style="padding: 0.9em 1.1em; background: #fff3ec; border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0;">
+            <div class="eyebrow" style="font-size: 0.65em; margin-bottom: 0.4em;">Стало (заложил и строю)</div>
+            <ul class="clean" style="font-size: 0.9em;">
+              <li><strong>Отказоустойчивый бэкенд</strong> на 5 сервисах</li>
+              <li><strong>Двухуровневый кэш</strong>: горячий (в памяти) + холодный (файловый), автообновление по cron, ~5 млн записей в памяти</li>
+              <li><strong>Автоматизированные процессы ревью</strong> (CI-гейты)</li>
+              <li><strong>Мониторинг</strong> и алерты</li>
+              <li><strong>Нагрузочное и регрессионное тестирование</strong></li>
+              <li><strong>Multi-AZ</strong> + балансировка нагрузки между зонами (в процессе)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pills" style="margin-top: 1.2em;">
+          <span class="tag">Python</span>
+          <span class="tag">Node.js / TypeScript</span>
+          <span class="tag">PostgreSQL / TimescaleDB</span>
+          <span class="tag">Redis</span>
+          <span class="tag accent">Databento</span>
+          <span class="tag">WebSocket</span>
+          <span class="tag">GitLab CI</span>
+          <span class="tag">Infisical</span>
+          <span class="tag">Multi-AZ</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 16a. Финтех-B2C (скрытый режим) — 5 roles breakdown -->
+    <section>
+      <div class="slide-pad center">
+        <div class="eyebrow">Почему 1 человек = команда из 5 · на примере Финтех-B2C (скрытый режим)</div>
+        <h2 style="max-width: 26ch;">В типичной команде эти 5 ролей делают 5 разных людей. Я закрываю их один.</h2>
+        <table class="compare" style="margin-top: 1.5em; font-size: 0.82em;">
+          <thead>
+            <tr>
+              <th style="width: 28%;">Роль в команде</th>
+              <th>Что делаю в Финтех-B2C (скрытый режим)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="req"><strong style="color: var(--accent-2);">Architect / тех-директор</strong></td>
+              <td class="proof">Заложил архитектуру системы с нуля. Закладываю multi-AZ и балансировку нагрузки между зонами. ревью готовности к релизу.</td>
+            </tr>
+            <tr>
+              <td class="req"><strong style="color: var(--accent-2);">Backend Engineer (Python)</strong></td>
+              <td class="proof">core, ctrader — сбор рыночных данных через Databento и cTrader API, 15+ индикаторов, автосклейка контрактов.</td>
+            </tr>
+            <tr>
+              <td class="req"><strong style="color: var(--accent-2);">Backend Engineer (Node.js)</strong></td>
+              <td class="proof">web-server (WebSocket API, кэш в памяти), crm-back (JWT, RBAC, NowPayments, AdminJS — полный биллинг).</td>
+            </tr>
+            <tr>
+              <td class="req"><strong style="color: var(--accent-2);">DevOps / Platform</strong></td>
+              <td class="proof">GitLab CI по 5 проектам, Docker, Infisical для секретов, Redis Pub/Sub, горизонтальный scale WS-gateway, мониторинг.</td>
+            </tr>
+            <tr>
+              <td class="req"><strong style="color: var(--accent-2);">Тестирование / релиз-инженер</strong></td>
+              <td class="proof">Фреймворк регрессионного тестирования с автовалидаторами и эталонными значениями, нагрузочное тестирование, CI-гейты на качество.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size: 0.82em; color: var(--muted); margin-top: 1em; max-width: 58em;">
+          Это работает за счёт <strong>агентского пайплайна</strong> (Claude Code + разработка по спецификациям): шаблонный код, конечные точки, логирование, конфиги — AI в 3–5× быстрее. Бизнес-логика — 1.5–2× быстрее. Мозги и решения остаются за мной.
+        </p>
+      </div>
+    </section>
+
+    <!-- 16b. Финтех-B2C (скрытый режим) — artifacts mosaic (consolidated) -->
+    <section>
+      <div class="slide-pad">
+        <div class="eyebrow">Артефакты · Архитектура, модель данных, алгоритмы</div>
+        <h2 style="max-width: 28ch;">Система в документации: архитектура, поток данных, схема пользователя, индикаторы.</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 1vw; margin-top: 0.8em; flex: 1; min-height: 0;">
+          <div class="photo-cell" style="background: #0d1117; display: flex; align-items: center; justify-content: center; padding: 0.5em; border: 1px solid var(--line); min-height: 0;">
+            <img src="photos/uniqlab_arch_system.png" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block;" alt="архитектура системы">
+          </div>
+          <div class="photo-cell" style="background: #0d1117; display: flex; align-items: center; justify-content: center; padding: 0.5em; border: 1px solid var(--line); min-height: 0;">
+            <img src="photos/uniqlab_arch_dataflow.png" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block;" alt="поток данных">
+          </div>
+          <div class="photo-cell" style="background: white; display: flex; align-items: center; justify-content: center; padding: 0.5em; border: 1px solid var(--line); min-height: 0;">
+            <img src="photos/uniqlab_crm_schema.png" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block;" alt="схема пользователя">
+          </div>
+          <div class="photo-cell" style="background: #0d1117; display: flex; align-items: center; justify-content: center; padding: 0.5em; border: 1px solid var(--line); min-height: 0;">
+            <img src="photos/uniqlab_arch_indicators.png" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block;" alt="каталог индикаторов">
+          </div>
+        </div>
+        <p style="font-size: 0.7em; color: var(--muted); margin-top: 0.8em; max-width: 82ch; line-height: 1.4; flex: 0 0 auto;">
+          Фрагменты из <code>docs/architecture-presentation.html</code> (19 слайдов) и схем данных. Кодовая база на AI-агентах: каждый сервис с <code>CLAUDE.md</code> + <code>AGENTS.md</code>. Плюс недельные спринты и ревью готовности к релизу как артефакты роли тех-директора — скриншоты под NDA.
+        </p>
+      </div>
+    </section>
+
+    <!-- Bridge — How 1 = team of 5 -->
+    <section>
+      <div class="slide-pad center">
+        <div class="eyebrow">Как тезис работает · сведение</div>
+        <h2 style="max-width: 24ch;">Один человек = команда из 5. Это не метафора — это архитектура работы.</h2>
+
+        <div class="grid-2" style="margin-top: 1.5em; gap: 3vw;">
+          <div style="padding: 0.9em 1.1em; background: #f4f1e8; border-left: 3px solid var(--muted); border-radius: 0 6px 6px 0;">
+            <div class="eyebrow" style="font-size: 0.65em; color: var(--muted); margin-bottom: 0.5em;">Типичная команда</div>
+            <ul class="clean" style="font-size: 0.88em;">
+              <li>Architect / тех-директор</li>
+              <li>Backend (Python)</li>
+              <li>Backend (Node.js)</li>
+              <li>DevOps / Platform</li>
+              <li>Тестирование / релиз-инженер</li>
+            </ul>
+            <p style="font-size: 0.8em; color: var(--muted); margin: 0.8em 0 0 0;">
+              Фиксированные издержки, координация, цикл «идея → прод» — в неделях-месяцах.
+            </p>
+          </div>
+          <div style="padding: 0.9em 1.1em; background: #fff3ec; border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0;">
+            <div class="eyebrow" style="font-size: 0.65em; margin-bottom: 0.5em;">Мой подход</div>
+            <ul class="clean" style="font-size: 0.88em;">
+              <li><strong>Один человек</strong> держит картину целиком</li>
+              <li><strong>Агентский пайплайн</strong>: Claude Code, разработка по спецификациям и ограничениям</li>
+              <li><strong>кодовая база на AI-агентах</strong>: CLAUDE.md / AGENTS.md в каждом сервисе</li>
+              <li><strong>Boilerplate / endpoints / logging / configs</strong> — AI в 3–5× быстрее</li>
+              <li><strong>Бизнес-логика</strong> — AI в 1.5–2× быстрее; решения и архитектура остаются за мной</li>
+            </ul>
+            <p style="font-size: 0.8em; color: var(--accent-2); margin: 0.8em 0 0 0; font-weight: 600;">
+              Тот же output. Цикл «идея → прод» — в днях-неделях. Фикс. издержек почти нет.
+            </p>
+          </div>
+        </div>
+
+        <p style="font-size: 0.8em; color: var(--muted); margin-top: 1.3em; max-width: 60em; line-height: 1.5;">
+          На Финтех-B2C (скрытый режим) я закрываю 5 ролей один. На GeekyCats — 4 отдела. На Salomander — тех-лид + процесс + преемственность. На ПМС — ядро системы в одиночку. Это не разовый трюк, это **повторяющийся паттерн**.
+        </p>
+      </div>
+    </section>
+
+    <!-- Side / Personal projects -->
+    <section>
+      <div class="slide-pad">
+        <div class="eyebrow">Side / Personal projects</div>
+        <h2 style="max-width: 26ch;">Три личных проекта, где я продолжаю тот же подход — один человек и агентский pipeline.</h2>
+
+        <div class="grid-3" style="margin-top: 1.5em; gap: 2vw;">
+          <div style="padding: 1em 1.1em; background: #f6f3ea; border-top: 3px solid var(--accent-2); border-radius: 6px; display: flex; flex-direction: column;">
+            <div class="eyebrow" style="font-size: 0.65em; margin-bottom: 0.4em;">Финтех · Крипто</div>
+            <h3 style="color: var(--ink); font-size: 1.2em; font-weight: 700; margin: 0 0 0.4em 0;">BlueFreedom</h3>
+            <p style="font-size: 0.82em; margin: 0 0 0.6em 0; line-height: 1.4;">
+              Соло — крипто-трейдинг платформа: <strong>14 микросервисов</strong>, ~75K строк, ~400 коммитов. Мультипользовательские подписки, копи-трейдинг, AI-исполнитель, Telegram + Веб.
+            </p>
+            <p style="font-size: 0.75em; color: var(--muted); margin: 0 0 0.4em 0;">Status: pending GTM · pre-launch</p>
+            <p style="font-size: 0.75em; margin-top: auto; color: var(--muted);">Публичного сайта пока нет — покажу репозиторий по запросу</p>
+          </div>
+
+          <div style="padding: 1em 1.1em; background: #f6f3ea; border-top: 3px solid var(--accent); border-radius: 6px; display: flex; flex-direction: column;">
+            <div class="eyebrow" style="font-size: 0.65em; margin-bottom: 0.4em;">Open source · AI / Evolutionary</div>
+            <h3 style="color: var(--ink); font-size: 1.2em; font-weight: 700; margin: 0 0 0.4em 0;">AlphaEvolve</h3>
+            <p style="font-size: 0.82em; margin: 0 0 0.6em 0; line-height: 1.4;">
+              Ядро — <strong>эволюционный поиск</strong> торговых стратегий. Подход вдохновлён работами Google DeepMind по автоматическому инжинирингу алгоритмов.
+            </p>
+            <p style="font-size: 0.75em; color: var(--muted); margin: 0 0 0.4em 0;">Public open source</p>
+            <p style="font-size: 0.75em; margin-top: auto;"><a href="https://github.com/beskrovnykh" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">github.com/beskrovnykh</a></p>
+          </div>
+
+          <div style="padding: 1em 1.1em; background: #f6f3ea; border-top: 3px solid var(--accent-2); border-radius: 6px; display: flex; flex-direction: column;">
+            <div class="eyebrow" style="font-size: 0.65em; margin-bottom: 0.4em;">Здоровье · B2C</div>
+            <h3 style="color: var(--ink); font-size: 1.2em; font-weight: 700; margin: 0 0 0.4em 0;">FamilyDoctor</h3>
+            <p style="font-size: 0.82em; margin: 0 0 0.6em 0; line-height: 1.4;">
+              «Док — ваш семейный психолог». AI-платформа <strong>EFT-терапии для пар</strong> (методология Susan Johnson). Агентская «память терапевта» на Claude Code SDK. Лендинг собрал <strong>за вечер</strong>.
+            </p>
+            <p style="font-size: 0.75em; color: var(--muted); margin: 0 0 0.4em 0;">Грант АСИ — заявка подана</p>
+            <p style="font-size: 0.75em; margin-top: auto;"><a href="https://ourfamilydoctor.org" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">ourfamilydoctor.org</a></p>
+          </div>
+        </div>
+
+        <p style="font-size: 0.78em; color: var(--muted); margin-top: 1.3em; max-width: 72ch; line-height: 1.5;">
+          Это не «работа по найму» — это мои собственные продукты в трёх разных доменах. Каждый строится одним человеком с агентским pipeline. Подтверждение тезиса, а не его метафора.
+        </p>
+      </div>
+    </section>
+
+    <!-- DIVIDER — Thesis match -->
+    <section class="section-divider">
+      <h4>Сведение</h4>
+      <h1>Requirements ↔ Proof</h1>
+      <h3>Каждый пункт вашего запроса — с конкретным артефактом из моей биографии.</h3>
+    </section>
+
+    <!-- 20. Match table -->
+    <section>
+      <div class="slide-pad">
+        <table class="compare">
+          <thead>
+            <tr><th style="width: 36%;">Запрос роли</th><th>Доказательство</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="req">Соло-исполнение, идея → прод</td>
+              <td class="proof"><strong>Финтех-B2C (скрытый режим)</strong> — тех-директор, соло-бэкенд + архитектура, мобильное приложение к релизу. <strong>GeekyCats</strong> — тех + методика + операции закрывал один.</td>
+            </tr>
+            <tr>
+              <td class="req">1 человек = команда из 3–5</td>
+              <td class="proof"><strong>Финтех-B2C (скрытый режим)</strong> — 5 сервисов соло. <strong>GeekyCats</strong> — 4 отдела в одних руках. <strong>Salomander</strong> — тех-лид, вырастил преемника.</td>
+            </tr>
+            <tr>
+              <td class="req">Агентский пайплайн в продукте</td>
+              <td class="proof"><strong>Финтех-B2C (скрытый режим)</strong> — кодовая база на AI-агентах (CLAUDE.md + AGENTS.md в каждом сервисе). <strong>AlphaEvolve</strong> — эволюционный агент для трейдинг-стратегий.</td>
+            </tr>
+            <tr>
+              <td class="req">Исследование → Архитектура → Код → Сайт → Продажи</td>
+              <td class="proof"><strong>GeekyCats</strong> — полный B2C-цикл Образование. <strong>Финтех-B2C (скрытый режим)</strong> — от сбора данных до CRM, биллинга, лендинга.</td>
+            </tr>
+            <tr>
+              <td class="req">Разные домены: железо, образование, здоровье, финтех, недвижимость, B2C-сервисы</td>
+              <td class="proof"><strong>Образование</strong>: GeekyCats, Умка. <strong>Госсектор</strong>: ЭИИС РИХ ПМС. <strong>Игры</strong>: Salomander. <strong>Финтех · B2C</strong>: Финтех-B2C (скрытый режим). <strong>Здоровье</strong>: FamilyDoctor. <strong>Финтех · Крипто</strong>: BlueFreedom.</td>
+            </tr>
+            <tr>
+              <td class="req">Строить то, что переживёт тебя</td>
+              <td class="proof">Школа <strong>GeekyCats</strong> работает 5+ лет без меня. <strong>ПМС</strong> — госсистема на проде. <strong>Salomander</strong> — преемник сопровождает до сих пор.</td>
+            </tr>
+            <tr>
+              <td class="req">Предпринимательское + инженерное мышление</td>
+              <td class="proof">Основатель GeekyCats (образование), FamilyDoctor (здоровье + грант АСИ), тех-директор Финтех-B2C (скрытый режим). Мехмат НГУ, научные публикации.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 21. Addressing concerns -->
+    <section>
+      <div class="slide-pad">
+        <div class="eyebrow">Ответ на обратную связь технического эксперта</div>
+        <h2 style="max-width: 22ch;">Production-grade, scale и leadership — закрыто. Просто leadership — в другой форме.</h2>
+        <table class="compare" style="margin-top: 1.5em;">
+          <tbody>
+            <tr>
+              <td class="req"><strong>Тестовые фреймворки</strong></td>
+              <td class="proof"><strong>Финтех-B2C (скрытый режим)</strong> — фреймворк регресс-тестирования с автовалидаторами и эталонными значениями. <strong>ProIT</strong> — сквозное покрытие на TestContainers. <strong>BlueFreedom</strong> — тесты критических путей в микросервисной архитектуре.</td>
+            </tr>
+            <tr>
+              <td class="req"><strong>Автоматизация сборочных пайплайнов</strong></td>
+              <td class="proof"><strong>Финтех-B2C (скрытый режим)</strong> — GitLab CI по 5 проектам, Docker, Infisical. <strong>ProIT</strong> — Kubernetes-деплой на 5 контуров через Helm. <strong>BlueFreedom</strong> — автодеплой на 14 сервисов через GitHub Actions.</td>
+            </tr>
+            <tr>
+              <td class="req"><strong>Отказоустойчивость и масштабируемость</strong></td>
+              <td class="proof"><strong>ProIT</strong> — высоконагруженная госсистема, Camunda + реактивный стек. <strong>BlueFreedom</strong> — многопользовательский исполнитель с аварийной остановкой и восстановлением после сбоя. <strong>Финтех-B2C (скрытый режим)</strong> — WebSocket-шлюз с горизонтальным масштабированием, Redis Pub/Sub, мягкая деградация.</td>
+            </tr>
+            <tr>
+              <td class="req"><strong>Leadership</strong></td>
+              <td class="proof">Управление людьми — <strong>осознанно не мой фокус</strong>. Был опыт: сооснователь + операционный управляющий GeekyCats, тех-лид Salomander (вырастил инженера-преемника, который ведёт проект до сих пор). Выбор сегодня — <em>оркестрация агентских систем</em> вместо найма: быстрее цикл «идея → прод», ниже фикс. издержки, выше рычаг.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 22. Orchestration manifesto -->
+    <section>
+      <div class="slide-pad center">
+        <div class="eyebrow">Почему оркестрация, а не управление людьми</div>
+        <div class="quote" style="font-size: 1.5em; max-width: 30ch;">
+          Управление людьми раздувает фиксированные издержки и замедляет цикл «идея → прод».
+          Агентский пайплайн даёт ту же производительность без найма — и это то, почему один человек сегодня = команда из 5.
+        </div>
+        <p style="font-size: 0.95em; color: var(--muted); max-width: 48ch; margin-top: 1.5em;">
+          Быть тех-лидом над агентскими системами: разработка по спецификациям и ограничениям, декомпозиция до проверяемых инвариантов, делегирование LLM. Это та форма лидерства, которая нужна ведущему инженеру в 2026.
+        </p>
+      </div>
+    </section>
+
+    <!-- 23. CTA / Closing -->
+    <section style="background: var(--ink); color: var(--paper); padding: 0; height: 100%;">
+      <div style="height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 8vh 6vw; box-sizing: border-box;">
+        <div style="font-size: 0.8em; color: #ff6b6b; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600; margin-bottom: 1.2em;">Давайте знакомиться</div>
+
+        <h1 style="color: var(--paper); font-size: 3em; max-width: 20ch; margin: 0 0 1.2em 0; line-height: 1.1;">Напишите в Telegram — обсудим пилот.</h1>
+
+        <a href="https://t.me/beskrovnykh" target="_blank" rel="noopener" style="display: inline-block; padding: 1em 2em; background: var(--accent); color: var(--paper); font-size: 1.35em; font-weight: 700; text-decoration: none; border-radius: 8px; letter-spacing: 0.01em; box-shadow: 0 6px 24px rgba(230,57,70,0.35);">
+          → t.me/beskrovnykh
+        </a>
+
+        <p style="font-size: 0.95em; color: var(--paper); opacity: 0.8; max-width: 52ch; margin: 1.8em auto 0 auto; line-height: 1.6;">
+          <strong style="color: #ff6b6b;">Пилот 2–3 недели.</strong> Возьму одну из ваших продуктовых гипотез — от discovery до работающего прототипа в проде. Критерии успеха договариваем на входе. Результат решает, продолжаем ли в первый круг.
+        </p>
+
+        <div style="margin-top: 2.5em; display: flex; gap: 2.5em; font-size: 0.85em; color: var(--paper); flex-wrap: wrap; justify-content: center;">
+          <div><span style="opacity: 0.55;">Email</span>&nbsp; andrew173139@gmail.com</div>
+          <div><span style="opacity: 0.55;">Phone</span>&nbsp; +7 (923) 182-14-08</div>
+          <div><span style="opacity: 0.55;">GitHub</span>&nbsp; <a href="https://github.com/beskrovnykh" target="_blank" rel="noopener" style="color: #ff6b6b; text-decoration: underline;">github.com/beskrovnykh</a></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    controls: true,
+    progress: true,
+    slideNumber: 'c/t',
+    transition: 'slide',
+    transitionSpeed: 'default',
+    width: 1440,
+    height: 900,
+    margin: 0,
+    minScale: 0.08,
+    maxScale: 2.5,
+    touch: true
+  });
+</script>
+
+</body>
+</html>
